@@ -1,0 +1,30 @@
+Act as a senior full-stack developer and product designer.
+
+I want to build a BAC Informatique project in Tunisia based on a CV management web app (similar to Resu-Me), but improved and more useful for students.
+
+Your task:
+
+1. Redesign the idea to make it more innovative and suitable for Tunisian students.
+2. Add AI features that are simple but impressive (not too complex).
+3. Suggest features that can be built with HTML, CSS, JavaScript, and Python (Flask or simple backend).
+4. Propose a clean UI/UX structure (pages, components).
+5. Include a simple database structure (tables and fields).
+6. Suggest a step-by-step development plan for a student.
+7. Keep everything realistic for a BAC student (no overengineering).
+
+Important:
+
+* The app must help students manage and improve their CVs.
+* Include a feature that gives smart suggestions to improve CV (AI or rule-based).
+* Include multi-language support (French / Arabic / English).
+* Keep the project simple but impressive for evaluation.
+
+Output format:
+
+* Project name
+* Concept
+* Features list
+* Tech stack
+* Database design
+* Step-by-step plan
+* Bonus ideas for higher grade
