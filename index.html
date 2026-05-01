@@ -41,6 +41,18 @@
     <button class="tab-btn" data-tab="sql">
       <span class="tab-icon">🗄️</span> SQL
     </button>
+    <button class="tab-btn" data-tab="quiz">
+      <span class="tab-icon">🎯</span> Quiz
+    </button>
+    <button class="tab-btn" data-tab="flashcards">
+      <span class="tab-icon">🃏</span> Flashcards
+    </button>
+    <button class="tab-btn" data-tab="challenge">
+      <span class="tab-icon">⚔️</span> Défi Code
+    </button>
+    <button class="tab-btn" data-tab="ai">
+      <span class="tab-icon">🤖</span> Explique-moi
+    </button>
   </nav>
 
   <!-- SEARCH BAR -->
@@ -2168,13 +2180,171 @@ WHERE email IS NOT NULL;</code></pre></div>
       </div>
 
     </section>
+    <!-- ==================== QUIZ ==================== -->
+    <section id="tab-quiz" class="tab-panel">
+      <div class="section-header" style="border-bottom-color:#a78bfa">
+        <h2 style="color:#a78bfa">🎯 Quiz Interactif</h2>
+      </div>
+      <div id="quiz-container">
+        <div id="quiz-selector" class="quiz-selector">
+          <p class="quiz-intro">Teste tes connaissances ! Choisis une matière :</p>
+          <div class="quiz-subject-btns">
+            <button class="quiz-subject-btn" data-subject="html" style="--c:#ff6b3d">🌐 HTML5</button>
+            <button class="quiz-subject-btn" data-subject="css" style="--c:#7ba3ff">🎨 CSS3</button>
+            <button class="quiz-subject-btn" data-subject="js" style="--c:#f5d23a">⚡ JavaScript</button>
+            <button class="quiz-subject-btn" data-subject="php" style="--c:#aab4d4">🐘 PHP</button>
+            <button class="quiz-subject-btn" data-subject="sql" style="--c:#34d35f">🗄️ SQL</button>
+          </div>
+        </div>
+        <div id="quiz-game" class="quiz-game" style="display:none">
+          <div class="quiz-header-row">
+            <span id="quiz-progress">Question 1/10</span>
+            <span id="quiz-score-live">Score: 0</span>
+            <div id="quiz-progress-bar"><div id="quiz-progress-fill"></div></div>
+          </div>
+          <div id="quiz-question-box">
+            <p id="quiz-question"></p>
+            <div id="quiz-options"></div>
+            <div id="quiz-feedback"></div>
+          </div>
+          <div id="quiz-next-row" style="display:none">
+            <button id="quiz-next-btn" class="quiz-next-btn">Suivant →</button>
+          </div>
+        </div>
+        <div id="quiz-result" class="quiz-result" style="display:none">
+          <div class="result-badge" id="result-emoji">🏆</div>
+          <h2 id="result-title">Excellent!</h2>
+          <p id="result-score-text"></p>
+          <div id="result-breakdown"></div>
+          <button id="quiz-restart-btn" class="quiz-next-btn">🔄 Recommencer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FLASHCARDS ==================== -->
+    <section id="tab-flashcards" class="tab-panel">
+      <div class="section-header" style="border-bottom-color:#34d399">
+        <h2 style="color:#34d399">🃏 Flashcards</h2>
+      </div>
+      <div class="flashcard-controls">
+        <select id="fc-subject" class="fc-select">
+          <option value="all">Toutes les matières</option>
+          <option value="html">HTML5</option>
+          <option value="css">CSS3</option>
+          <option value="js">JavaScript</option>
+          <option value="php">PHP</option>
+          <option value="sql">SQL</option>
+        </select>
+        <span id="fc-counter" class="fc-counter">1 / 30</span>
+        <button id="fc-shuffle" class="fc-btn">🔀 Mélanger</button>
+      </div>
+      <div id="flashcard-wrapper">
+        <div id="flashcard" class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <span id="fc-subject-tag" class="fc-tag">HTML</span>
+              <p id="fc-front-text"></p>
+              <span class="fc-hint">Clique pour retourner</span>
+            </div>
+            <div class="flashcard-back">
+              <p id="fc-back-text"></p>
+              <code id="fc-code-text" class="fc-code"></code>
+            </div>
+          </div>
+        </div>
+        <div class="fc-nav">
+          <button id="fc-prev" class="fc-nav-btn">← Précédent</button>
+          <div class="fc-rate-btns">
+            <button class="fc-rate-btn fc-bad" id="fc-bad">😓 Difficile</button>
+            <button class="fc-rate-btn fc-ok" id="fc-ok">😊 Bien</button>
+            <button class="fc-rate-btn fc-good" id="fc-good">🔥 Maîtrisé</button>
+          </div>
+          <button id="fc-next" class="fc-nav-btn">Suivant →</button>
+        </div>
+        <div class="fc-stats-row">
+          <span class="fc-stat fc-stat-bad">😓 <span id="fc-count-bad">0</span></span>
+          <span class="fc-stat fc-stat-ok">😊 <span id="fc-count-ok">0</span></span>
+          <span class="fc-stat fc-stat-good">🔥 <span id="fc-count-good">0</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CHALLENGE ==================== -->
+    <section id="tab-challenge" class="tab-panel">
+      <div class="section-header" style="border-bottom-color:#f59e0b">
+        <h2 style="color:#f59e0b">⚔️ Défi Code</h2>
+      </div>
+      <div class="challenge-layout">
+        <div class="challenge-sidebar">
+          <h3 class="challenge-title" id="ch-title">Chargement...</h3>
+          <div class="challenge-desc" id="ch-desc"></div>
+          <div class="challenge-hints" id="ch-hints"></div>
+          <div class="ch-nav-row">
+            <button class="ch-btn" id="ch-prev-btn">← Précédent</button>
+            <span id="ch-counter" class="ch-counter">1/12</span>
+            <button class="ch-btn" id="ch-next-btn">Suivant →</button>
+          </div>
+          <div id="ch-result" class="ch-result"></div>
+        </div>
+        <div class="challenge-editor-area">
+          <div class="editor-header">
+            <span id="ch-lang-tag" class="ch-lang-tag">SQL</span>
+            <span class="editor-label">Ton code ici</span>
+            <button id="ch-verify-btn" class="ch-verify-btn">▶ Vérifier</button>
+          </div>
+          <textarea id="ch-editor" class="ch-editor" spellcheck="false" placeholder="Écris ta réponse ici..."></textarea>
+          <div class="editor-expected">
+            <span class="expected-label">💡 Solution attendue : </span>
+            <button id="ch-reveal-btn" class="ch-reveal-btn">Afficher la solution</button>
+            <code id="ch-expected" class="ch-expected-code" style="display:none"></code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== AI EXPLAINER ==================== -->
+    <section id="tab-ai" class="tab-panel">
+      <div class="section-header" style="border-bottom-color:#60a5fa">
+        <h2 style="color:#60a5fa">🤖 Explique-moi</h2>
+      </div>
+      <div class="ai-layout">
+        <div class="ai-intro">
+          <p>Pose une question sur HTML, CSS, JavaScript, PHP ou SQL et obtiens une explication adaptée au programme STI Bac.</p>
+        </div>
+        <div class="ai-quick-prompts">
+          <span class="ai-quick-label">Questions rapides :</span>
+          <button class="ai-quick-btn" data-q="Explique la différence entre clé primaire et clé étrangère en SQL">🗄️ Clé primaire vs étrangère</button>
+          <button class="ai-quick-btn" data-q="Comment fonctionne $_POST en PHP avec un formulaire HTML?">🐘 $_POST en PHP</button>
+          <button class="ai-quick-btn" data-q="Quelle est la différence entre position absolute et relative en CSS?">🎨 Position CSS</button>
+          <button class="ai-quick-btn" data-q="Explique getElementById en JavaScript avec un exemple simple">⚡ getElementById JS</button>
+          <button class="ai-quick-btn" data-q="Comment créer un formulaire HTML avec validation?">🌐 Formulaire HTML</button>
+          <button class="ai-quick-btn" data-q="Explique JOIN en SQL avec un exemple de deux tables">🗄️ JOIN SQL</button>
+        </div>
+        <div class="ai-input-row">
+          <textarea id="ai-input" class="ai-textarea" placeholder="Ex: Comment fonctionne la boucle while en JS? Explique avec un exemple..." rows="3"></textarea>
+          <button id="ai-send-btn" class="ai-send-btn">
+            <span id="ai-send-text">Demander →</span>
+            <span id="ai-spinner" style="display:none">⏳</span>
+          </button>
+        </div>
+        <div id="ai-response-area" class="ai-response-area" style="display:none">
+          <div class="ai-response-header">
+            <span>🤖 Réponse</span>
+            <button id="ai-copy-btn" class="ai-copy-btn">📋 Copier</button>
+          </div>
+          <div id="ai-response-text" class="ai-response-text"></div>
+        </div>
+        <div id="ai-history" class="ai-history"></div>
+      </div>
+    </section>
+
   </main>
 
   <!-- BACK TO TOP -->
   <button class="back-top" id="backTop" title="Haut de page">↑</button>
 
   <footer class="site-footer">
-    <p>Bac Sciences de l'Informatique — Annexe 2024-2025 • TakiAcademy</p>
+    <p>Bac Sciences de l'Informatique — Annexe 2024-2025 </p>
   </footer>
 
   <script src="app.js"></script>
