@@ -165,11 +165,11 @@ function colorizeCode() {
     let html = block.innerHTML;
 
     // HTML comments
-    html = html.replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<span style="color:#6a9955">$1</span>');
+    html = html.replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<span>$1</span>');
     // SQL comments
-    html = html.replace(/(--.*)/g, '<span style="color:#6a9955">$1</span>');
+    html = html.replace(/(--.*)/g, '<span>$1</span>');
     // PHP comments
-    html = html.replace(/(\/\/.*)/g, '<span style="color:#6a9955">$1</span>');
+    html = html.replace(/(\/\/.*)/g, '<span>$1</span>');
 
     // Strings (double quotes)
     html = html.replace(/"([^"<]*)"/g, '<span style="color:#ce9178">"$1"</span>');
@@ -864,13 +864,13 @@ class CodeManager {
     codeBlocks.forEach(block => {
       let html = block.innerHTML;
       
-      html = html.replace(/(&lt;[^&]*&gt;)/g, '<span style="color:#ff6b3d">$1</span>');
+      html = html.replace(/(&lt;[^&]*&gt;)/g, '<span>$1</span>');
       const jsKeywords = /\b(function|const|let|var|return|if|else|for|while|do|switch|case|break|continue)\b/g;
-      html = html.replace(jsKeywords, '<span style="color:#f5d23a">$1</span>');
+      html = html.replace(jsKeywords, '<span>$1</span>');
       const phpKeywords = /\b(echo|if|else|function|return|class|public|private|protected|static)\b/g;
       html = html.replace(phpKeywords, '<span style="color:#aab4d4">$1</span>');
       const sqlKeywords = /\b(SELECT|FROM|WHERE|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|JOIN|GROUP|ORDER|BY)\b/gi;
-      html = html.replace(sqlKeywords, '<span style="color:#34d35f">$1</span>');
+      html = html.replace(sqlKeywords, '<span>$1</span>');
       
       block.innerHTML = html;
     });
@@ -1112,3 +1112,4 @@ window.addEventListener('load', () => {
   
   if (Math.random() > 0.7) showMotivationalTip();
 });
+
